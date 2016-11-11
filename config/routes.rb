@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-root 'users#home'
+root 'users#home', as: :home
   get '/lsignup' => 'users#new', as: :user_signin
 
   post '/user' => 'users#create', as: :user_log
@@ -16,6 +16,7 @@ root 'users#home'
 
   get "/event/:id/edit" => "events#edit", as: :event_edit
   put "/event/:id/edit" => "events#update", as: :event_update
+  get "event/:id" => "events#show", as: :event_show
 
 
 

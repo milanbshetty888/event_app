@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 			session[:user_id] = user.id
 			redirect_to login_path
 		else
-			redirect_to '/user_signin'
+			redirect_to user_signin_path
 		end
 	end
 
