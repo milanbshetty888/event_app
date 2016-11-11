@@ -1,0 +1,60 @@
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+	<div style="background-color:#aaa">
+		<div class="container">
+			<div class="row" id="top">
+				<div class="col-sm-3">
+						<%=image_tag("logo11.jpg", class: "logo_icon")%>
+					</a>
+				</div>
+				<div class="col-sm-5">
+					<p id="heading_style"><h1>Event manager</h1></p>
+				</div>
+				<div class="col-sm-2 link_logo">
+					<center>
+						<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">sign_up</button>
+
+						<div class="modal fade" id="myModal" role="dialog">
+							<div class="modal-dialog">
+								<!-- */***************************************************** -->
+
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal">&times;</button>
+									</div>
+									<div class="modal-body">
+									</div>
+
+									<h4 class="modal-title"><center><h1>Signup!</h1></center></h4>
+
+
+									<%= form_for :user, url:user_log_path do |f| %>
+
+									<%= f.label :fname %><br> <%= f.text_field :fname %><br>
+									<%= f.label :lname %><br> <%= f.text_field :lname %><br>
+									<%= f.label :username %><br> <%= f.text_field :username %><br>
+									<%= f.label :email %><br> <%= f.text_field :email %><br>
+									<%= f.label :phoneno %><br> <%= f.text_field :phoneno %><br>
+									<%= f.label :password %><br> <%= f.password_field :password %><br>
+									<%= f.label :password_confirmation %><br> <%= f.password_field :password_confirmation %><br>
+									<%= f.submit "Submit" %>
+									<br>
+									<% end %>
+									</div>
+									</div>
+								</center>
+							</div>
+		
+					<!--  -->
+					
+		
+
+					<!--  -->
+				</div>
+
+</center></div></div></div></div>
