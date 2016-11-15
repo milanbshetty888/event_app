@@ -52,7 +52,11 @@
 				<div class="col-sm-5">
 					<p id="heading_style"><h1>Event manager</h1></p>
 				</div>
-	<div class="col-sm-2"></div>
+	<div class="col-sm-2">
+     welcome : <%#= current_user.username%>
+     <%= link_to current_user.username, user_edit_path(current_user) %>
+
+    </div>
 	<div class="col-sm-2"><%= link_to 'logout',	login_destroy_path %></td></div>
 				</div>
 				</div>
@@ -60,25 +64,34 @@
 
 
 
-
+<!-- **************************** -->
 
   <br><br><br><br>
 
-  <div class="container">
-  <div class="row">
-   <div class="col-sm-4">
-
-<% @event1.each do |b|%>
-<div style="background-color:#aaa">
-Event name: <%= b.title%><br>
-Organizee :@var<br>
-Particepents :<%= b.invitees%><br>
-</div>
-<%= link_to 'Show Details',event_show_path(@event1)%>
-<br><br>
- <%end%>
-
-   </div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <%@event2.each do |b|%>
+                <%=link_to event_edit_path(b) do%>
+                edit
+                    <div style="background-color:#ccc" class="well">
+                        Event name: <%= b.title%><br>
+                        Organizee :<%=b.user_id%><br>
+                        Particepents :<%#= b.invitees%>
+                        <% @invitation.each do |var|%>
+                            <%#binding.pry%>
+                            <% if var.invitee_id.to_i == @current_user.id && var.event_id.to_i == b.id %>
+                                <%value =  var.inviter_id %>
+                                <%name = User.find_by_id(value.to_i).username%>
+                                <%= name%>
+                            <%end%>
+                        <%end%>
+                    </div>
+                <%end%>
+                        <br><br><br>
+            <%end%>
+        </div>
+      
 
 
 <div class="col-sm-2"></div>
@@ -105,9 +118,21 @@ Particepents :<%= b.invitees%><br>
 <%= f.label :date %> <br><%= f.text_field :date %><br>
 <%= f.label :time %> <br><%= f.text_field :time %><br>
 <%= f.label :description %> <br><%= f.text_field :description %><br>
- <%= f.label :invitees %><br><%= f.text_field :invitees %><br>
+ <%= f.label :invitees %>
+
+<ul>
+  <% @user.each do |role| %>
+      <li>
+        <%= check_box_tag 'role_ids[]', role.id %>
+        <%= h role.username %>
+      </li>
+  <% end %>
+</ul>
+
+
 <%= f.label :status %> <br>
-<%= f.text_field :status %><br>
+<%=f.label :status%><br>
+          <%= f.select :status, ['open', 'closed']%><br><br>
 <%= f.submit "Submit" %>
 </center>
 <% end %>

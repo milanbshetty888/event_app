@@ -9,14 +9,16 @@ root 'users#home', as: :home
   post '/login' => 'sessions#create', as: :login_post
   get '/logout' => 'sessions#destroy', as: :login_destroy
 
+  get '/edit/:user_id/user' => 'sessions#edit', as: :user_edit
+  put '/edit/:user_id/user' => 'sessions#update', as: :user_update
 
   get '/event/new/:user_id' => 'events#new', as: :event_new
   post '/event/create/:user_id' => 'events#create', as: :event_create
   get '/event/index' => 'events#index', as: :event_index
 
-  get "/event/:id/edit" => "events#edit", as: :event_edit
-  put "/event/:id/edit" => "events#update", as: :event_update
+  get "/event/:user_id/edit" => "events#edit", as: :event_edit
   get "event/:id" => "events#show", as: :event_show
+  put "/event/:user_id/edit" => "events#update", as: :event_update
 
 
 
