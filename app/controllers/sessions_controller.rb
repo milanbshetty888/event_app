@@ -21,8 +21,8 @@ end
 
 	def edit
 		# binding.pry
-		@user = Event.find_by_id(params[:user_id])
-		@user1 = User.find_by_id(@user.id)
+		# @user = Event.find_by_id(params[:user_id])
+		@user1 = User.find_by_id(params[:user_id])
 	end
 
 	def update

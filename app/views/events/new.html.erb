@@ -72,11 +72,15 @@
     <div class="row">
         <div class="col-sm-4">
             <%@event2.each do |b|%>
-                <%=link_to event_edit_path(b) do%>
-                edit
                     <div style="background-color:#ccc" class="well">
+                <%=link_to event_edit_path(b) do%>
+               <button type="button" >edit</button><br>
+
+                <%end%>
                         Event name: <%= b.title%><br>
-                        Organizee :<%=b.user_id%><br>
+                        Organizee :<%b.user_id%>
+                        <%user_name = @user.find_by_id(b.user_id).username%>
+                        <%= user_name%><br>
                         Particepents :<%#= b.invitees%>
                         <% @invitation.each do |var|%>
                             <%#binding.pry%>
@@ -87,8 +91,7 @@
                             <%end%>
                         <%end%>
                     </div>
-                <%end%>
-                        <br><br><br>
+                        <br>
             <%end%>
         </div>
       

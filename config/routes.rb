@@ -19,6 +19,7 @@ root 'users#home', as: :home
   get "/event/:user_id/edit" => "events#edit", as: :event_edit
   get "event/:id" => "events#show", as: :event_show
   put "/event/:user_id/edit" => "events#update", as: :event_update
+  get 'unauthorized' => 'events#error',as: :errors_display
 
 
 
